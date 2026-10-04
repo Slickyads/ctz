@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Citizen — Monthly Performance Report · Sep 2026</title>
+<title>Monthly Performance Report</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Archivo:wght@400;500;600;700&family=Spline+Sans+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -350,7 +350,7 @@ body.editing .add:hover{background:var(--meta);color:var(--paper)}
 <body>
 
 <header id="topbar">
-  <div class="tb-brand"><b id="tbBrand">CITIZEN</b><span id="tbDoc">— Monthly Performance Report</span></div>
+  <div class="tb-brand"><b id="tbBrand">Citizens</b><span id="tbDoc">— Monthly Performance Report</span></div>
   <div id="navgrp">
     <button class="nbtn" id="navPrev" title="Previous slide (←)"><i data-lucide="chevron-left"></i></button>
     <span id="counter"><span id="cPos">01</span> / <span id="cTot">14</span></span>
@@ -406,7 +406,7 @@ body.editing .add:hover{background:var(--meta);color:var(--paper)}
    DATA LAYER — single source of truth (same schema as the sheet)
    ================================================================ */
 const DEFAULT_DATA = {
-  brand:"CITIZEN",
+  brand:"Citizens",
   docType:"Monthly Performance Report",
   period:"1 – 30 Sep 2026",
   month:"September",
@@ -443,7 +443,7 @@ const DEFAULT_DATA = {
       {date:"18.04.26", type:"Traffic", name:"EMR Admission"},
       {date:"16.11.25", type:"Leads",   name:"General Admission"},
       {date:"29.06.26", type:"General", name:"General Admission"},
-      {date:"24.07.26", type:"Leads",   name:"Meta Citizen05 — Admission"},
+      {date:"24.07.26", type:"Leads",   name:"Meta Citizens05 — Admission"},
       {date:"18.04.26", type:"Leads",   name:"EMR Admission"},
       {date:"31.08.26", type:"Leads",   name:"Admission EMR"},
     ],
@@ -504,7 +504,7 @@ const DEFAULT_DATA = {
 /* ================================================================
    plumbing
    ================================================================ */
-const LS_KEY='citizen-report-v1';
+const LS_KEY='Citizens-report-v1';
 const clone=o=>JSON.parse(JSON.stringify(o));
 const $=s=>document.querySelector(s);
 const deck=$('#deck'),filmList=$('#filmList'),gWrap=$('#gWrap'),stage=$('#stage'),viewport=$('#viewport');
@@ -1045,7 +1045,7 @@ btnEdit.addEventListener('click',()=>{
   const blob=new Blob([JSON.stringify(DATA,null,2)],{type:'application/json'});
   const a=document.createElement('a');
   a.href=URL.createObjectURL(blob);
-  a.download=`citizen-deck-${String(DATA.month).toLowerCase()}-${DATA.year}.json`;
+  a.download=`Citizens-deck-${String(DATA.month).toLowerCase()}-${DATA.year}.json`;
   document.body.appendChild(a);a.click();a.remove();
   setTimeout(()=>URL.revokeObjectURL(a.href),3000);
   toast('Data exported — import it next month');
@@ -1074,7 +1074,7 @@ window.addEventListener('beforeprint',finalizeCounts);
    google sheets import (same 9-tab structure)
    ================================================================ */
 const SHEET_TABS=['Config','SpendLines','MetaCampaigns','MetaAssets','LanguageSplit','Audiences','MetaSummary','GoogleInsights','Actions'];
-const SHEET_URL_KEY='citizen-report-sheet-url';
+const SHEET_URL_KEY='Citizens-report-sheet-url';
 
 function parseCSV(text){
   const rows=[];let row=[],cell='',q=false;
